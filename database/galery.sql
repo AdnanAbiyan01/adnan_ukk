@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Apr 2024 pada 10.55
+-- Waktu pembuatan: 22 Apr 2024 pada 18.04
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -35,6 +35,15 @@ CREATE TABLE `albums` (
   `date_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `albums`
+--
+
+INSERT INTO `albums` (`id`, `user_id`, `name`, `description`, `date_created`) VALUES
+(1, 1, 'Pemandangan', 'gambar tok sehhh..', '2024-04-22 16:22:03'),
+(2, 3, 'Blitz Krieg', 'perang?', '2024-04-22 18:34:38'),
+(3, 2, 'Seni/art', 'Hanya Seni', '2024-04-20 22:54:19');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +58,13 @@ CREATE TABLE `comments` (
   `photo_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `comments`
+--
+
+INSERT INTO `comments` (`id`, `user_id`, `date`, `content`, `photo_id`) VALUES
+(1, 2, '2024-04-22 18:35:33', 'hi', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +78,13 @@ CREATE TABLE `likes` (
   `photo_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `likes`
+--
+
+INSERT INTO `likes` (`id`, `user_id`, `date`, `photo_id`) VALUES
+(1, 2, '2024-04-22 18:35:16', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -72,10 +95,22 @@ CREATE TABLE `photos` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
+  `photo` text NOT NULL,
   `description` text NOT NULL,
   `date_upload` datetime NOT NULL,
   `album_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `photos`
+--
+
+INSERT INTO `photos` (`id`, `user_id`, `title`, `photo`, `description`, `date_upload`, `album_id`) VALUES
+(1, 1, 'Dashboard', 'Blue And Pink Aesthetic Desktop Wallpaper.png.png', 'gambar gunung', '2024-04-22 16:35:45', 1),
+(3, 1, 'Rumbling Eren', '1218892.jpg.jpg', 'AOT', '2024-04-22 17:06:32', 1),
+(6, 2, 'Perang', 'Apik.jpg.jpg', 'Warr', '2024-04-22 19:20:53', 2),
+(7, 1, 'Wall Sina', 'iyo.jpg.jpg', 'WUUUUUUUUUUUUUU', '2024-04-10 19:21:43', 1),
+(8, 3, 'Negara', 'Country.jpg.jpg', 'Nama Nama Negara', '2024-04-06 22:53:30', 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +132,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `name`, `address`) VALUES
-(1, 'abi', '$2y$10$fPbwvCy.HpRvhuLKMTnVeugwB9lfEUvKUnomd2rIK/FppuJ4USFW.', 'aabi69932@gmail.com', 'Adnan Abiyan Amrullah', '321 Pine Street, Smalltown, USA');
+(1, 'abi', '$2y$10$fPbwvCy.HpRvhuLKMTnVeugwB9lfEUvKUnomd2rIK/FppuJ4USFW.', 'aabi69932@gmail.com', 'Adnan Abiyan Amrullah', '321 Pine Street, Smalltown, USA'),
+(2, 'iqbal', '$2y$10$Lm3OQ5qMUO5sJfmttiy4nOI90LV4pnL94J0bzmLvv8qHfb/1kQTai', 'iqbal@gmail.com', 'dani', 'US'),
+(3, 'John', '$2y$10$D0/tZzonTXvh6n0j3MyNGezrxyfP4hZoLGPt7DFP0GZZDLcA7i706', 'budi.santoso@example.com', 'John Doe', 'Jalan Gatot Subroto No. 456');
 
 --
 -- Indexes for dumped tables
@@ -148,31 +185,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `albums`
 --
 ALTER TABLE `albums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

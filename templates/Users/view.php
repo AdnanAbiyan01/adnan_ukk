@@ -74,8 +74,8 @@ $this->Breadcrumbs->add([
         <table class="table table-hover text-nowrap">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('User Id') ?></th>
                 <th><?= __('Name') ?></th>
+                <th><?= __('Title') ?></th>
                 <th><?= __('Description') ?></th>
                 <th><?= __('Date Created') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -90,7 +90,7 @@ $this->Breadcrumbs->add([
                 <?php foreach ($user->albums as $album) : ?>
                     <tr>
                         <td><?= h($album->id) ?></td>
-                        <td><?= h($album->user_id) ?></td>
+                        <td><?= h($user->name) ?></td>
                         <td><?= h($album->name) ?></td>
                         <td><?= h($album->description) ?></td>
                         <td><?= h($album->date_created) ?></td>
@@ -118,7 +118,7 @@ $this->Breadcrumbs->add([
         <table class="table table-hover text-nowrap">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('User Id') ?></th>
+                <th><?= __('Name') ?></th>
                 <th><?= __('Date') ?></th>
                 <th><?= __('Content') ?></th>
                 <th><?= __('Photo Id') ?></th>
@@ -134,7 +134,7 @@ $this->Breadcrumbs->add([
                 <?php foreach ($user->comments as $comment) : ?>
                     <tr>
                         <td><?= h($comment->id) ?></td>
-                        <td><?= h($comment->user_id) ?></td>
+                        <td><?= h($user->name) ?></td>
                         <td><?= h($comment->date) ?></td>
                         <td><?= h($comment->content) ?></td>
                         <td><?= h($comment->photo_id) ?></td>
@@ -162,7 +162,7 @@ $this->Breadcrumbs->add([
         <table class="table table-hover text-nowrap">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('User Id') ?></th>
+                <th><?= __('Name') ?></th>
                 <th><?= __('Date') ?></th>
                 <th><?= __('Photo Id') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -177,7 +177,7 @@ $this->Breadcrumbs->add([
                 <?php foreach ($user->likes as $like) : ?>
                     <tr>
                         <td><?= h($like->id) ?></td>
-                        <td><?= h($like->user_id) ?></td>
+                        <td><?= h($user->name) ?></td>
                         <td><?= h($like->date) ?></td>
                         <td><?= h($like->photo_id) ?></td>
                         <td class="actions">

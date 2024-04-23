@@ -40,9 +40,9 @@ $this->Breadcrumbs->add([
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($users as $user) : ?>
+                <?php foreach ($users as $id => $user) : ?>
                     <tr>
-                        <td><?= $this->Number->format($user->id) ?></td>
+                        <td><?= $this->Number->format($id + 1) ?></td>
                         <td><?= h($user->username) ?></td>
                         <td><?= h($user->email) ?></td>
                         <td><?= h($user->name) ?></td>

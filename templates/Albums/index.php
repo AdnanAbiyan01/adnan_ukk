@@ -40,9 +40,9 @@ $this->Breadcrumbs->add([
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($albums as $album) : ?>
+                <?php foreach ($albums as $id => $album) : ?>
                     <tr>
-                        <td><?= $this->Number->format($album->id) ?></td>
+                        <td><?= $this->Number->format($id + 1) ?></td>
                         <td><?= $album->has('user') ? $this->Html->link($album->user->name, ['controller' => 'Users', 'action' => 'view', $album->user->id]) : '' ?></td>
                         <td><?= h($album->name) ?></td>
                         <td><?= h($album->date_created) ?></td>

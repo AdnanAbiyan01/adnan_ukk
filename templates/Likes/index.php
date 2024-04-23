@@ -40,9 +40,9 @@ $this->Breadcrumbs->add([
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($likes as $like) : ?>
+                <?php foreach ($likes as $id => $like) : ?>
                     <tr>
-                        <td><?= $this->Number->format($like->id) ?></td>
+                        <td><?= $this->Number->format($id + 1) ?></td>
                         <td><?= $like->has('user') ? $this->Html->link($like->user->name, ['controller' => 'Users', 'action' => 'view', $like->user->id]) : '' ?></td>
                         <td><?= h($like->date) ?></td>
                         <td><?= $like->has('photo') ? $this->Html->link($like->photo->title, ['controller' => 'Photos', 'action' => 'view', $like->photo->id]) : '' ?></td>

@@ -62,7 +62,7 @@ $this->Breadcrumbs->add([
         <h3 class="card-title"><?= __('Photo') ?></h3>
     </div>
     <div class="card-body">
-        <?= $this->Text->autoParagraph(h($photo->photo)); ?>
+        <?= $this->Html->image('../images/'.$photo->photo, ['width' => '100%']);?>
     </div>
 </div>
 
@@ -87,10 +87,10 @@ $this->Breadcrumbs->add([
         <table class="table table-hover text-nowrap">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('User Id') ?></th>
+                <th><?= __('Name') ?></th>
                 <th><?= __('Date') ?></th>
                 <th><?= __('Content') ?></th>
-                <th><?= __('Photo Id') ?></th>
+                <th><?= __('Title') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php if (empty($photo->comments)) : ?>
@@ -100,13 +100,13 @@ $this->Breadcrumbs->add([
                     </td>
                 </tr>
             <?php else : ?>
-                <?php foreach ($photo->comments as $comment) : ?>
+                <?php foreach ($photo->comments as $id => $comment) : ?>
                     <tr>
-                        <td><?= h($comment->id) ?></td>
-                        <td><?= h($comment->user_id) ?></td>
+                        <td><?= h($id + 1) ?></td>
+                        <td><?= $photo->has('user') ? $this->Html->link($photo->user->name, ['controller' => 'Users', 'action' => 'view', $photo->user->id]) : '' ?></td>
                         <td><?= h($comment->date) ?></td>
                         <td><?= h($comment->content) ?></td>
-                        <td><?= h($comment->photo_id) ?></td>
+                        <td><?= h($photo->title) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['controller' => 'Comments', 'action' => 'view', $comment->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'Comments', 'action' => 'edit', $comment->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
@@ -131,9 +131,9 @@ $this->Breadcrumbs->add([
         <table class="table table-hover text-nowrap">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('User Id') ?></th>
+                <th><?= __('Name') ?></th>
                 <th><?= __('Date') ?></th>
-                <th><?= __('Photo Id') ?></th>
+                <th><?= __('Title') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php if (empty($photo->likes)) : ?>
@@ -143,12 +143,12 @@ $this->Breadcrumbs->add([
                     </td>
                 </tr>
             <?php else : ?>
-                <?php foreach ($photo->likes as $like) : ?>
+                <?php foreach ($photo->likes as $id => $like) : ?>
                     <tr>
-                        <td><?= h($like->id) ?></td>
-                        <td><?= h($like->user_id) ?></td>
+                        <td><?= h($id + 1) ?></td>
+                        <td><?= $photo->has('user') ? $this->Html->link($photo->user->name, ['controller' => 'Users', 'action' => 'view', $photo->user->id]) : '' ?></td>
                         <td><?= h($like->date) ?></td>
-                        <td><?= h($like->photo_id) ?></td>
+                        <td><?= h($photo->title) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['controller' => 'Likes', 'action' => 'view', $like->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'Likes', 'action' => 'edit', $like->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>

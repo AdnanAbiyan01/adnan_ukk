@@ -78,7 +78,7 @@ $this->Breadcrumbs->add([
                 <th><?= __('Title') ?></th>
                 <th><?= __('Description') ?></th>
                 <th><?= __('Date Upload') ?></th>
-                <th><?= __('Album Id') ?></th>
+                <th><?= __('Album Name') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php if (empty($album->photos)) : ?>
@@ -88,14 +88,14 @@ $this->Breadcrumbs->add([
                     </td>
                 </tr>
             <?php else : ?>
-                <?php foreach ($album->photos as $photo) : ?>
+                <?php foreach ($album->photos as $id => $photo) : ?>
                     <tr>
-                        <td><?= h($photo->id) ?></td>
+                        <td><?= h($id + 1) ?></td>
                         <td><?= h($photo->user_id) ?></td>
                         <td><?= h($photo->title) ?></td>
                         <td><?= h($photo->description) ?></td>
                         <td><?= h($photo->date_upload) ?></td>
-                        <td><?= h($photo->album_id) ?></td>
+                        <td><?= h($album->name) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['controller' => 'Photos', 'action' => 'view', $photo->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'Photos', 'action' => 'edit', $photo->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>

@@ -40,9 +40,9 @@ $this->Breadcrumbs->add([
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($comments as $comment) : ?>
+                <?php foreach ($comments as $id => $comment) : ?>
                     <tr>
-                        <td><?= $this->Number->format($comment->id) ?></td>
+                        <td><?= $this->Number->format($id + 1) ?></td>
                         <td><?= $comment->has('user') ? $this->Html->link($comment->user->name, ['controller' => 'Users', 'action' => 'view', $comment->user->id]) : '' ?></td>
                         <td><?= h($comment->date) ?></td>
                         <td><?= $comment->has('photo') ? $this->Html->link($comment->photo->title, ['controller' => 'Photos', 'action' => 'view', $comment->photo->id]) : '' ?></td>
